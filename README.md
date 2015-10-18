@@ -9,7 +9,7 @@ This repository contains **Dockerfile** of Ubuntu for Docker's [automated build]
 * Pull from [Docker Hub](https://hub.docker.com/r/xaamin/ubuntu) `docker pull xaamin/ubuntu`
 
 ### Manual build
-* Build an image from Dockerfile `docker build -t xaamin/ubuntu https://github.com/xaamin/docker-ubuntu.git`
+* Build an image from Dockerfile `docker build -t xaamin/ubuntu https://github.com/xaamin/ubuntu.git`
 
 ### Usage
 ```
