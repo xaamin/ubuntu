@@ -13,5 +13,5 @@ This repository contains **Dockerfile** of Ubuntu for Docker's [automated build]
 
 ### Usage
 ```
-	docker run --rm -it xaamin/ubuntu
+	docker run --rm -it xaamin/ubuntu bash
 ```

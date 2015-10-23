@@ -7,6 +7,7 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential \
 		software-properties-common \
+		python-software-properties \
 		byobu \
 		curl \
 		git \
