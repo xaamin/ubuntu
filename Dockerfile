@@ -43,9 +43,6 @@ RUN apt-get -y update \
 ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
 
-# Add bootstrap file
-ADD root/sources.sh /root/sources.sh
-
 # Set environment variables
 ENV HOME /root
 
@@ -53,7 +50,7 @@ ENV HOME /root
 WORKDIR /root
 
 # Add sources to bashrc
-RUN /bin/bash  /root/sources.sh
+RUN /bin/bash  /root/.scripts/start.sh
 
 # Default command
 CMD ["/bin/bash"]
