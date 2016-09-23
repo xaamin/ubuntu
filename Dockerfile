@@ -1,11 +1,27 @@
 FROM ubuntu:16.04
 MAINTAINER Benjamín Martínez Mateos <xaamin@outlook.com>
 
+# Enable multiverse
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+
+# Installing the 'apt-utils' package gets rid of the 
+# 'debconf: delaying package configuration, since apt-utils is not installed'
+# error message when installing any other package with the apt-get package manager.
+
+RUN apt-get -y update \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
+		--no-install-recommends \
+		apt-utils 
+
+# Upgrade OS
+RUN apt-get -y upgrade \
+	&& rm -rf /var/lib/apt/lists/*
+
 # Install requeriments
-RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
-	&& apt-get -y update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential \
+RUN apt-get -y update \
+	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
+		--no-install-recommends \
+		build-essential \
 		software-properties-common \
 		byobu \
 		curl \
