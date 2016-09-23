@@ -20,11 +20,15 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 
 	# Remove temp files	
 	&& apt-get clean \
+    && apt-get -y autoremove \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add additional files
 ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
+
+# Add bootstrap file
+ADD root/sources.sh /root/sources.sh
 
 # Set environment variables
 ENV HOME /root
