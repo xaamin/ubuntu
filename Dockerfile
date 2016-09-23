@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER Benjamín Martínez Mateos <bmxamin@gmail.com>
+FROM ubuntu:16.04
+MAINTAINER Benjamín Martínez Mateos <xaamin@outlook.com>
 
 # Install requeriments
 RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
@@ -23,7 +23,6 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add additional files
-ADD root/.bashrc /root/.bashrc
 ADD root/.gitconfig /root/.gitconfig
 ADD root/.scripts /root/.scripts
 
@@ -32,6 +31,9 @@ ENV HOME /root
 
 # Set working directory
 WORKDIR /root
+
+# Add sources to bashrc
+RUN /bin/bash  /root/.bashrc
 
 # Default command
 CMD ["/bin/bash"]
