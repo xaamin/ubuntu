@@ -37,7 +37,7 @@ ENV HOME /root
 WORKDIR /root
 
 # Add sources to bashrc
-RUN /bin/bash  /root/.bashrc
+RUN /bin/bash  /root/sources.sh
 
 # Default command
 CMD ["/bin/bash"]
