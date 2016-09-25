@@ -1,8 +1,8 @@
-## Ubuntu 14.04 dockerfile
+## Ubuntu dockerfile
 This repository contains **Dockerfile** of Ubuntu for Docker's [automated build](https://hub.docker.com/r/xaamin/ubuntu) published to [Docker Hub](https://hub.docker.com) 
 
 ### Base docker image
-* [ubuntu:14.04](https://registry.hub.docker.com/r/library/ubuntu)
+* [ubuntu](https://registry.hub.docker.com/r/library/ubuntu)
 
 ### Installation
 * Install [Docker](https://www.docker.com)
