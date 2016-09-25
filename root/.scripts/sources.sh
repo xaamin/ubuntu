@@ -25,17 +25,19 @@ alias ls="ls -ph --color=auto"
 
 # Colorize grep
 if echo hello|grep --color=auto l >/dev/null 2>&1; then
-  export GREP_OPTIONS="--color=auto" GREP_COLOR="1;31"
+	alias grep="/usr/bin/grep --color=auto"
+  	export GREP_COLOR="1;31"
 fi
 
 # Shell
 export CLICOLOR="1"
+
 if [ -f $HOME/.scripts/git-prompt.sh ]; then
-  source $HOME/.scripts/git-prompt.sh
-  export GIT_PS1_SHOWDIRTYSTATE="1"
-  export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w $(__git_ps1 \[\033[35m\]{\[\033[35m\]%s\[\033[35m\]})\[\033[34m\]\[\033[00m\]\$ '
+  	source $HOME/.scripts/git-prompt.sh
+  	export GIT_PS1_SHOWDIRTYSTATE="1"
+  	export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u@\h\[\033[00m\]:\[\033[01;32m\]\w $(__git_ps1 \[\033[35m\]{\[\033[35m\]%s\[\033[35m\]})\[\033[34m\]\[\033[00m\]\$ '
 else
-  export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  	export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
 
 # Git
