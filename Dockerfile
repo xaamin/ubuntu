@@ -2,8 +2,10 @@ FROM ubuntu:14.04
 MAINTAINER Benjamín Martínez Mateos <xaamin@outlook.com>
 
 # Install requeriments
-RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && apt-get -y update \
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
+	&& apt-get -y update \
 	&& apt-get -y upgrade \	
+	&& apt-get -y update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
 		--no-install-recommends \
 		build-essential \
