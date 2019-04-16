@@ -8,6 +8,7 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
     && apt-get -y update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y \
         --no-install-recommends \
+        gpg-agent \
         net-tools \
         iputils-ping \
         tzdata \
