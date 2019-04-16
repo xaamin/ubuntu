@@ -1,47 +1,42 @@
 FROM ubuntu:16.04
 MAINTAINER Benjamín Martínez Mateos <xaamin@outlook.com>
 
-# Enable multiverse
-RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
-
-# Installing the 'apt-utils' package gets rid of the 
-# 'debconf: delaying package configuration, since apt-utils is not installed'
-# error message when installing any other package with the apt-get package manager.
-
-RUN apt-get -y update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
-		--no-install-recommends \
-		apt-utils 
-
-# Upgrade OS
-RUN apt-get -y upgrade \
-	&& rm -rf /var/lib/apt/lists/*
-
 # Install requeriments
-RUN apt-get -y update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get install -y \
-		--no-install-recommends \
-		build-essential \
-		software-properties-common \
-		byobu \
-		curl \
-		git \
-		htop \
-		man \
-		zip \
-		unzip \
-		vim \
-		wget \
-		supervisor \
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
+    && apt-get -y update \
+    && apt-get -y upgrade \
+    && apt-get -y update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        --no-install-recommends \
+        net-tools \
+        iputils-ping \
+        tzdata \
+        iproute2 \
+        dnsutils \
+        apt-utils \
+        build-essential \
+        software-properties-common \
+        byobu \
+        bash-completion \
+        curl \
+        git \
+        htop \
+        man \
+        zip \
+        unzip \
+        vim \
+        wget \
+        supervisor \
+        openssh-server \
 
-	# Remove temp files	
-	&& apt-get clean \
+    # Remove temp files
+    && apt-get clean \
     && apt-get -y autoremove \
-	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Add additional files
 ADD root/.gitconfig /root/.gitconfig
-ADD root/.scripts /root/.scripts
+ADD root/scripts /root/scripts
 
 # Set environment variables
 ENV HOME /root
@@ -49,8 +44,8 @@ ENV HOME /root
 # Set working directory
 WORKDIR /root
 
-# Add sources to bashrc
-RUN /bin/bash  /root/.scripts/start.sh
+# Expose SSH
+EXPOSE 22
 
 # Default command
 CMD ["/bin/bash"]
