@@ -10,7 +10,7 @@ if [ ${SSH_PASSWORD} ]; then
 
         echo ""
         echo " ========================================= "
-        echo "Configuring SSH service with password ${SSH_PASSWORD}"
+        echo "Configuring SSH service"
 
         echo "root:${SSH_PASSWORD}" | chpasswd
         sed -i 's/#\?PermitRootLogin prohibit-password.*/PermitRootLogin yes/' /etc/ssh/sshd_config
