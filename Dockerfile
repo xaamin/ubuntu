@@ -29,7 +29,6 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
         wget \
         supervisor \
         openssh-server \
-
     # Remove temp files
     && apt-get clean \
     && apt-get -y autoremove \
