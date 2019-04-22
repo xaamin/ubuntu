@@ -31,10 +31,6 @@ if [ ! -f "$LOCK_FILE" ]; then
     chown -R $USER:$USER /home/$USER
 
     touch $LOCK_FILE
-
-    chmod g+rwxs /home/$USER
-
-    chmod g+rwxs -R /home/$USER/web || true
 fi
 
 if [ ! -d "/home/$USER/.ssh" ]; then
