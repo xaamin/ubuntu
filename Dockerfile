@@ -32,7 +32,8 @@ RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list \
     # Remove temp files
     && apt-get clean \
     && apt-get -y autoremove \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+    && useradd -m xaamin
 
 # Add additional files
 ADD root/.gitconfig /root/.gitconfig
