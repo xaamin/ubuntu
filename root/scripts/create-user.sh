@@ -1,6 +1,6 @@
 #!/bin/bash
 
-USER=${USER:-'xaamin'}
+USER=${USER:-'rocket'}
 
 USER_UID=${USER_UID:-8276}
 USER_GID=${USER_GID:-8276}
